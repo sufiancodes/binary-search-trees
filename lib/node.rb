@@ -1,5 +1,6 @@
-
+require_relative 'comparable'
 class Node
+  include Comparable
   attr_accessor :data, :left, :right
   def initialize(data)
     @data = data
@@ -7,5 +8,3 @@ class Node
     @right = nil
   end
 end
-
-bst = Node.new([1,2,3,4,5])

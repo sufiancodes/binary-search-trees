@@ -13,6 +13,13 @@ class Tree
     root.right = build_tree(array, mid+1, stop)
     return root
   end
+  def pretty_print(node = @root, prefix = '', is_left = true)
+  pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
+  puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
+  pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
+root = bst.build_tree([1,2,3,4,5], 0, 4)
+bst.pretty_print(root)

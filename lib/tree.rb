@@ -18,8 +18,20 @@ class Tree
   puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
   pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
   end
+  def insert(value, root)
+    retrun Node(value) if root == nil
+    return root if root == value
+    if root.data > value
+      root.left = insert(value, root)
+    else
+      root.right = insert(value, root )
+    end
+    return root
+  end  
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-root = bst.build_tree([1,2,3,4,5], 0, 4)
-bst.pretty_print(root)
+roo = bst.build_tree([1,2,3,4,5], 0, 4)
+bst.pretty_print(roo)
+hey = bst.insert(6, roo)
+bst.pretty_print(hey)

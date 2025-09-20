@@ -21,11 +21,7 @@ class Tree
   def insert(value, root)
     return Node.new(value) if root == nil
     return root if root.data == value
-    if root.data > value
-      root.left = insert(value, root.left)
-    else
-      root.right = insert(value, root.right)
-    end
+    root.data > value ? root.left = insert(value, root.left) : root.right = insert(value, root.right)
     return root
   end  
 end
@@ -34,4 +30,5 @@ bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
 bst.pretty_print(roo)
 hey = bst.insert(6, roo)
-bst.pretty_print(roo)
+tt = bst.insert(9, hey)
+bst.pretty_print(tt)

@@ -24,7 +24,13 @@ class Tree
     root.data > value ? root.left = insert(value, root.left) : root.right = insert(value, root.right)
     return root
   end
-  
+  def get_sucessor(current)
+    current = current.right
+    while current.right != nil && current.left != nil
+      current = current.left
+    end
+    return current
+  end
   def delete (root, value)
     return root if root == nil
     if root.data > value
@@ -35,6 +41,9 @@ class Tree
       return root.right if root.left == nil
       return root.left if root.right == nil
     end
+    suc = get_sucessor(root)
+    root.value = suc.value
+    root.right = delete(root.right, suc.value)
   end
 end
 

@@ -23,12 +23,23 @@ class Tree
     return root if root.data == value
     root.data > value ? root.left = insert(value, root.left) : root.right = insert(value, root.right)
     return root
-  end  
+  end
+  
+  def delete (root, value)
+    return root if root == nil
+    if root.data > value
+      root.left = delete(root.left, value)
+    elsif root.data < value
+      root.right = delete(root.right, value)
+    else
+      return root.right if root.left == nil
+      return root.left if root.right == nil
+    end
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
 bst.pretty_print(roo)
-hey = bst.insert(6, roo)
-tt = bst.insert(9, hey)
-bst.pretty_print(tt)
+ccc = bst.delete(roo, 5)
+bst.pretty_print(ccc)

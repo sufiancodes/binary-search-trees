@@ -24,31 +24,32 @@ class Tree
     root.data > value ? root.left = insert(value, root.left) : root.right = insert(value, root.right)
     return root
   end
-  def get_sucessor(current)
-    current = current.right
-    while current.right != nil && current.left != nil
+  def get_successor(root)
+    current = root.right
+    while current != nil && current.left != nil
       current = current.left
     end
     return current
   end
   def delete (root, value)
-    return root if root == nil
+    return root if root.nil?
     if root.data > value
       root.left = delete(root.left, value)
     elsif root.data < value
       root.right = delete(root.right, value)
     else
-      return root.right if root.left == nil
-      return root.left if root.right == nil
+      return root.left if root.right.nil?
+      return root.right if root.left.nil?
+    suc = get_successor(root)
+    root.data = suc.data
+    root.right = delete(root.right, suc.data)
     end
-    suc = get_sucessor(root)
-    root.value = suc.value
-    root.right = delete(root.right, suc.value)
+    return root
   end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
 bst.pretty_print(roo)
-ccc = bst.delete(roo, 5)
+ccc = bst.delete(roo, 3)
 bst.pretty_print(ccc)

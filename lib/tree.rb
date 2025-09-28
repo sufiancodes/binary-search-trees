@@ -46,6 +46,11 @@ class Tree
     end
     return root
   end
+  def find(value, root)
+    # this method should return node containing the given value
+    # basecase
+    return root if root.nil? 
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])

@@ -47,14 +47,19 @@ class Tree
     return root
   end
   def find(value, root)
-    # this method should return node containing the given value
-    # basecase
-    return root if root.nil? 
+    return root if root.nil?
+    if root.data == value
+      return root
+    elsif root.data < value
+      root.left = find(value, root.right)
+    else
+      root.right = find(value, root.left)
+    end
   end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
 bst.pretty_print(roo)
-ccc = bst.delete(roo, 3)
-bst.pretty_print(ccc)
+ccc = bst.find(1,roo)
+p ccc

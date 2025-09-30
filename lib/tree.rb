@@ -48,18 +48,15 @@ class Tree
   end
   def find(value, root)
     return root if root.nil?
-    if root.data == value
-      return root
-    elsif root.data < value
-      root.left = find(value, root.right)
-    else
-      root.right = find(value, root.left)
-    end
+    return root if root.data == value
+    return find(value, root.right) if root.data < value
+    find(value, root.left)
   end
+
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
 bst.pretty_print(roo)
-ccc = bst.find(1,roo)
+ccc = bst.find(4,roo)
 p ccc

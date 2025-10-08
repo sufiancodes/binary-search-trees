@@ -52,11 +52,21 @@ class Tree
     return find(value, root.right) if root.data < value
     find(value, root.left)
   end
-
+  def bfs(root)
+    #the purpose of this function is to traverse the tree and print values in bf maner
+    return nil if root == nil
+    queue = []
+    queue.push(root)
+    while queue != nil 
+      front = queue.shift
+      puts front
+    end
+    puts queue
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
+p roo
 bst.pretty_print(roo)
-ccc = bst.find(4,roo)
-p ccc
+bst.bfs(roo)

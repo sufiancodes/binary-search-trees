@@ -53,20 +53,22 @@ class Tree
     find(value, root.left)
   end
   def bfs(root)
-    #the purpose of this function is to traverse the tree and print values in bf maner
+    #the purpose of this function is to traverse the tree and print values in bf manor
     return nil if root == nil
     queue = []
     queue.push(root)
-    while queue != nil 
+    while queue.count != 0 
       front = queue.shift
-      puts front
+      puts front.data
+      queue.push(front.left) if front.left != nil
+      queue.push(front.right) if front.right != nil
     end
-    puts queue
   end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
-p roo
+
 bst.pretty_print(roo)
+bst.bfs(roo)
 bst.bfs(roo)

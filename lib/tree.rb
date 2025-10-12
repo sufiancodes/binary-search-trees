@@ -60,19 +60,20 @@ class Tree
       front = queue.shift
       queue.push(front.left) if front.left != nil
       queue.push(front.right) if front.right != nil
-      p front
+      p front.data
     end
   end
-  def bfs_recursively(root, height)
-    return if height == 10
+  def bfs_recursively(root)
     puts root.data
-    bfs_recursively(root)
+    bfs_recursively(root.left) if root.left != nil
+    bfs_recursively(root.right) if root.right != nil
   end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-roo = bst.build_tree([1,2,3,4,5], 0, 4)
+roo = bst.build_tree([1,2,3,4,5,6,7,8], 0, 7)
 
 bst.pretty_print(roo)
 # bst.bfs_iteratively(roo)
-bst.bfs_recursively(roo,4)
+# puts "----------------------"
+bst.bfs_recursively(roo)

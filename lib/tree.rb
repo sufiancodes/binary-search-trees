@@ -53,7 +53,6 @@ class Tree
     find(value, root.left)
   end
   def bfs_iteratively(root)
-    #the purpose of this function is to traverse the tree and print values in bf manor
     return nil if root == nil
     queue = []
     queue.push(root)
@@ -64,10 +63,16 @@ class Tree
       p front
     end
   end
+  def bfs_recursively(root, height)
+    return if height == 10
+    puts root.data
+    bfs_recursively(root)
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5], 0, 4)
 
 bst.pretty_print(roo)
-bst.bfs(roo)
+# bst.bfs_iteratively(roo)
+bst.bfs_recursively(roo,4)

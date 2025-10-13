@@ -63,10 +63,17 @@ class Tree
       p front.data
     end
   end
-  def bfs_recursively(root)
-    puts root.data
-    bfs_recursively(root.left) if root.left != nil
-    bfs_recursively(root.right) if root.right != nil
+  def print_nodes_at_level(root, level)
+    return if root.nil?
+    if level == 1
+      puts root.data
+    else
+    print_nodes_at_level(root.left, level - 1)
+    print_nodes_at_level(root.right, level - 1)
+    end
+  end
+  def bfs_recursively(root, height)
+    
   end
 end
 
@@ -74,6 +81,4 @@ bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5,6,7,8], 0, 7)
 
 bst.pretty_print(roo)
-# bst.bfs_iteratively(roo)
-# puts "----------------------"
-bst.bfs_recursively(roo)
+bst.print_nodes_at_level(roo, 1)

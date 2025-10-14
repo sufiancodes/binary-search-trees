@@ -74,8 +74,8 @@ class Tree
   end
   def bfs_recursively(root, height)
     return nil if height == 0
-    print_nodes_at_level(root, height)
     bfs_recursively(root, height - 1)
+    print_nodes_at_level(root, height)
   end
 end
 

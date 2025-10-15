@@ -77,10 +77,16 @@ class Tree
     bfs_recursively(root, height - 1)
     print_nodes_at_level(root, height)
   end
+  def preorder(root)
+    return if root.nil?
+    puts root.data
+    preorder(root.left)
+    preorder(root.right)
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5,6,7,8], 0, 7)
 
 bst.pretty_print(roo)
-bst.bfs_recursively(roo, 4)
+bst.preorder(roo)

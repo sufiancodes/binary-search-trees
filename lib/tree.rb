@@ -83,10 +83,17 @@ class Tree
     preorder(root.left)
     preorder(root.right)
   end
+  def inorder(root)
+    return if root.nil?
+    inorder(root.left)
+    puts root.data
+    inorder(root.right)
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
 roo = bst.build_tree([1,2,3,4,5,6,7,8], 0, 7)
 
 bst.pretty_print(roo)
-bst.preorder(roo)
+# bst.preorder(roo)
+bst.inorder(roo)

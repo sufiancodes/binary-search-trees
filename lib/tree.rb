@@ -95,6 +95,13 @@ class Tree
     postorder(root.right)
     puts root.data
   end
+  def height(root, value)
+    element = find(root, value)
+    height_recursively(element, height)
+  end
+  def height_recursively(element, height)
+    
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
@@ -103,4 +110,4 @@ roo = bst.build_tree([1,2,3,4,5,6,7,8], 0, 7)
 bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
-bst.postorder(roo)
+p bst.height(roo, 6)

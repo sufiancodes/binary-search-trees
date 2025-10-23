@@ -96,11 +96,15 @@ class Tree
     puts root.data
   end
   def height(root, value)
-    element = find(root, value)
-    height_recursively(element, height)
+    element = find(value, root)
+    height_recursively(element, 0)
   end
-  def height_recursively(element, height)
-    
+  def height_recursively(root, height = 0)
+    return height if root.nil?
+    left_subtree = height_recursively(root.left, height+1)
+    right_subtree = height_recursively(root.right, height+1)
+    p left_subtree
+    p right_subtree
   end
 end
 
@@ -110,4 +114,5 @@ roo = bst.build_tree([1,2,3,4,5,6,7,8], 0, 7)
 bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
-p bst.height(roo, 6)
+# p bst.height(roo, 6)
+bst.height(roo, 6)

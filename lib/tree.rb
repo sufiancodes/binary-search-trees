@@ -103,8 +103,7 @@ class Tree
     return height if root.nil?
     left_subtree = height_recursively(root.left, height+1)
     right_subtree = height_recursively(root.right, height+1)
-    p left_subtree
-    p right_subtree
+    result = [left_subtree, right_subtree]
   end
 end
 
@@ -115,4 +114,5 @@ bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
 # p bst.height(roo, 6)
-bst.height(roo, 6)
+a = bst.height(roo, 6)
+p a

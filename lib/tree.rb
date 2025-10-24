@@ -103,7 +103,7 @@ class Tree
     return height if root.nil?
     left_subtree = height_recursively(root.left, height+1)
     right_subtree = height_recursively(root.right, height+1)
-    result = [left_subtree, right_subtree].uniq.max
+    [left_subtree, right_subtree].max
   end
 end
 
@@ -114,5 +114,5 @@ bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
 # p bst.height(roo, 6)
-a = bst.height(roo, 7)
+a = bst.height(roo, 8)
 p a

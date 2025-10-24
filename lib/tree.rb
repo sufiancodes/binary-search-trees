@@ -97,13 +97,13 @@ class Tree
   end
   def height(root, value)
     element = find(value, root)
-    height_recursively(element, 0)
+    height_recursively(element)
   end
-  def height_recursively(root, height = 0)
+  def height_recursively(root, height = -1)
     return height if root.nil?
     left_subtree = height_recursively(root.left, height+1)
     right_subtree = height_recursively(root.right, height+1)
-    result = [left_subtree, right_subtree]
+    result = [left_subtree, right_subtree].uniq.max
   end
 end
 
@@ -114,5 +114,5 @@ bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
 # p bst.height(roo, 6)
-a = bst.height(roo, 6)
+a = bst.height(roo, 7)
 p a

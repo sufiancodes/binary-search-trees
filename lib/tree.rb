@@ -107,10 +107,12 @@ class Tree
   end
   def depth(root, value)
     element = find(value, root)
-    depth_recursively(element)
+
   end
-  def depth_recursively(value, deepness = 0)
-    
+  def find_depth(value, root, deppness = 0)
+    return deppness if root.data == value
+    return find(value, root.right, deppness + 1) if root.data < value
+    find(value, root.left, deppness + 1)
   end
 end
 

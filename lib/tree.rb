@@ -106,13 +106,13 @@ class Tree
     [left_subtree, right_subtree].max
   end
   def depth(root, value)
-    element = find(value, root)
-
+    element = find_depth(value, root)
+    p element
   end
   def find_depth(value, root, deppness = 0)
     return deppness if root.data == value
-    return find(value, root.right, deppness + 1) if root.data < value
-    find(value, root.left, deppness + 1)
+    return find_depth(value, root.right, deppness + 1) if root.data < value
+    find_depth(value, root.left, deppness + 1)
   end
 end
 
@@ -123,5 +123,5 @@ bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
 # p bst.height(roo, 6)
-a = bst.height(roo, 8)
+a = bst.depth(roo, 4)
 p a

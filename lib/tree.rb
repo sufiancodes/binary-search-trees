@@ -105,6 +105,13 @@ class Tree
     right_subtree = height_recursively(root.right, height+1)
     [left_subtree, right_subtree].max
   end
+  def depth(root, value)
+    element = find(value, root)
+    depth_recursively(element)
+  end
+  def depth_recursively(value, deepness = 0)
+    
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])

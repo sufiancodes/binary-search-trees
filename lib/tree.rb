@@ -110,6 +110,10 @@ class Tree
     return depth(value, root.right, deppness + 1) if root.data < value
     depth(value, root.left, deppness + 1)
   end
+  def balanced(root)
+    return nil if root.nil?
+
+  end
 end
 
 bst = Tree.new(arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
@@ -119,5 +123,5 @@ bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
 # p bst.height(roo, 6)
-a = bst.depth(1, roo)
-p a
+# a = bst.depth(8, roo)
+# p a

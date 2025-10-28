@@ -110,21 +110,20 @@ class Tree
     return depth(value, root.right, deppness + 1) if root.data < value
     depth(value, root.left, deppness + 1)
   end
-  def find_height_recursively(root, height = -1)
-    return height if root.nil?
-    left_subtree = height_recursively(root.left, height+1)
-    right_subtree = height_recursively(root.right, height+1)
-    [left_subtree, right_subtree]
-  end
-  def balanced(root)
-    return nil if root.nil?
+  def check_if_balanced(root)
     max = find_height_recursively(root).max
     min = find_height_recursively(root).min
     if max - min <= 1
       puts "Balanced"
     else
       puts "Not Balanced"
-    end 
+    end
+  end
+  def balanced(root)
+    return nil if root.nil?
+    check_if_balanced(root)
+    p balanced(root.left)
+    p balanced(root.right)
   end
 end
 

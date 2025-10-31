@@ -99,32 +99,36 @@ class Tree
     element = find(value, root)
     height_recursively(element)
   end
+  def depth(value, root, deppness = 0)
+    return deppness if root.data == value
+    return depth(value, root.right, deppness + 1) if root.data < value
+    depth(value, root.left, deppness + 1)
+  end
   def height_recursively(root, height = -1)
     return height if root.nil?
     left_subtree = height_recursively(root.left, height+1)
     right_subtree = height_recursively(root.right, height+1)
     [left_subtree, right_subtree].max
   end
-  def depth(value, root, deppness = 0)
-    return deppness if root.data == value
-    return depth(value, root.right, deppness + 1) if root.data < value
-    depth(value, root.left, deppness + 1)
-  end
   def find_if_balanced(root)
     max = height_recursively(root.right)
     min = height_recursively(root.left)
     if max - min <= 1
-      puts "OK"
+      return true
     else
-      puts "Not OK"
+      return false
     end
   end
-  def balanced(root)
+  def balanced? (root)
     return nil if root.nil?
-    find_if_balanced(root)
-    balanced(root.left)
-    balanced(root.right)
-    
+    result = find_if_balanced(root)
+    if result == false
+      return false
+    else
+      balanced?(root.left)
+      balanced?(root.right)
+    end
+    return true
   end
 end
 
@@ -137,5 +141,6 @@ bst.pretty_print(roo)
 # p bst.height(roo, 4)
 # a = bst.depth(8, roo)
 # p a
+# bst.insert(90, roo)
 bst.pretty_print(roo)
-p bst.balanced(roo)
+p bst.balanced?(roo)

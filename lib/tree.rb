@@ -110,7 +110,7 @@ class Tree
     right_subtree = height_recursively(root.right, height+1)
     [left_subtree, right_subtree].max
   end
-  def find_if_balanced(root)
+  def find_if_balanced? (root)
     max = height_recursively(root.right)
     min = height_recursively(root.left)
     if max - min <= 1
@@ -121,7 +121,7 @@ class Tree
   end
   def balanced? (root)
     return nil if root.nil?
-    result = find_if_balanced(root)
+    result = find_if_balanced? (root)
     if result == false
       return false
     else

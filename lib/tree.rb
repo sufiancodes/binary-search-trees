@@ -113,14 +113,10 @@ class Tree
   def find_if_balanced? (root)
     max = height_recursively(root.right)
     min = height_recursively(root.left)
-    if max - min <= 1
-      return true
-    else
-      return false
-    end
+    max - min <= 1
   end
   def balanced? (root)
-    return nil if root.nil?
+    return true if root.nil?
     result = find_if_balanced? (root)
     if result == false
       return false

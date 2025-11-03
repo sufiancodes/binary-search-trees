@@ -88,7 +88,7 @@ class Tree
   end
 
   def bfs_recursively(root, height)
-    return nil if height == 0
+    return nil if height.zero?
 
     bfs_recursively(root, height - 1)
     print_nodes_at_level(root, height)
@@ -153,6 +153,10 @@ class Tree
     balanced?(root.left)
     balanced?(root.right)
   end
+  
+  def rebalance(root)
+    
+  end 
 end
 
 bst = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
@@ -166,5 +170,3 @@ bst.pretty_print(roo)
 # p a
 # bst.insert(97, roo)
 # bst.insert(90, roo)
-bst.pretty_print(roo)
-p bst.balanced?(roo)

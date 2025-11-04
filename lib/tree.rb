@@ -1,10 +1,9 @@
 require_relative 'node'
 class Tree
-  attr_accessor :root, :arry, :len
+  attr_accessor :root, :arry
 
   def initialize(array)
     @arry = array
-    @len  = arry.length-1
   end
 
   def build_tree(arr = arry, start, stop)
@@ -154,14 +153,13 @@ class Tree
     balanced?(root.left)
     balanced?(root.right)
   end
-  
-  def rebalance(root)
+  def create_array(root)
     return arry if root.nil?
     arry.push(root.data)
-    rebalance(root.left)
-    rebalance(root.right)
-    
-    
+    create_array(root.left)
+    create_array(root.right)
+  end
+  def rebalance(root)
   end
 end
 

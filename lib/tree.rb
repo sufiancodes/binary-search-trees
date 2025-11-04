@@ -1,12 +1,13 @@
 require_relative 'node'
 class Tree
-  attr_accessor :root, :arry
+  attr_accessor :root, :arry, :len
 
   def initialize(array)
     @arry = array
+    @len  = arry.length-1
   end
 
-  def build_tree(arr, start, stop)
+  def build_tree(arr = arry, start, stop)
     array = arr.sort.uniq
     return nil if start > stop
 
@@ -155,18 +156,29 @@ class Tree
   end
   
   def rebalance(root)
+    return arry if root.nil?
+    arry.push(root.data)
+    rebalance(root.left)
+    rebalance(root.right)
     
-  end 
+    
+  end
 end
 
-bst = Tree.new([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])
-roo = bst.build_tree([1, 2, 3, 4, 5, 6, 7, 8], 0, 7)
+bst = Tree.new([0,1,2,3,4,5,6,7,8,9])
+roo = bst.build_tree( 0, 9)
 
-bst.pretty_print(roo)
+# bst.pretty_print(roo)
 # bst.preorder(roo)
 # bst.inorder(roo)
 # p bst.height(roo, 4)
 # a = bst.depth(8, roo)
 # p a
-# bst.insert(97, roo)
-# bst.insert(90, roo)
+bst.insert(97, roo)
+bst.insert(90, roo)
+bst.insert(91, roo)
+bst.insert(977, roo)
+
+bst.pretty_print(roo)
+p bst.rebalance(roo)
+# bst.pretty_print(roo)

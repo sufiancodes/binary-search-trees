@@ -153,30 +153,18 @@ class Tree
     balanced?(root.left)
     balanced?(root.right)
   end
+
   def create_array(root)
     return arry if root.nil?
+
     arry.push(root.data)
     create_array(root.left)
     create_array(root.right)
   end
+
   def rebalance(root)
+    array = create_array(root)
+    size = array.uniq.length - 1
+    root = build_tree(array, 0, size)
   end
 end
-
-bst = Tree.new([0,1,2,3,4,5,6,7,8,9])
-roo = bst.build_tree( 0, 9)
-
-# bst.pretty_print(roo)
-# bst.preorder(roo)
-# bst.inorder(roo)
-# p bst.height(roo, 4)
-# a = bst.depth(8, roo)
-# p a
-bst.insert(97, roo)
-bst.insert(90, roo)
-bst.insert(91, roo)
-bst.insert(977, roo)
-
-bst.pretty_print(roo)
-p bst.rebalance(roo)
-# bst.pretty_print(roo)

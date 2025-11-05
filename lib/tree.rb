@@ -3,11 +3,12 @@ class Tree
   attr_accessor :root, :arry
 
   def initialize(array)
-    @arry = array
+    @arry = array.uniq
+    @len = arry.length - 1
   end
-
-  def build_tree(arr = arry, start, stop)
-    array = arr.sort.uniq
+#  this stop is creating problems
+  def build_tree(arr = arry, start = 0, stop = @len)
+    array = arr.sort
     return nil if start > stop
 
     mid = (start + stop) / 2
@@ -168,3 +169,8 @@ class Tree
     root = build_tree(array, 0, size)
   end
 end
+
+bst = Tree.new(Array.new(15) { rand(1..100) })
+# p bst.arry.length
+root = bst.build_tree
+bst.pretty_print(root)

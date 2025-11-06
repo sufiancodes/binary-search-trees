@@ -6,9 +6,10 @@ class Tree
     @arry = array.uniq
     @len = arry.length - 1
   end
-#  this stop is creating problems
+
   def build_tree(arr = arry, start = 0, stop = @len)
-    array = arr.sort
+    array = arr.sort.uniq
+
     return nil if start > stop
 
     mid = (start + stop) / 2
@@ -159,18 +160,26 @@ class Tree
     return arry if root.nil?
 
     arry.push(root.data)
+    # p root.data
     create_array(root.left)
     create_array(root.right)
   end
 
   def rebalance(root)
-    array = create_array(root)
-    size = array.uniq.length - 1
-    root = build_tree(array, 0, size)
+    result = create_array(root)
+    new_array = result.uniq
+    length = new_array.length - 1
+    build_tree(new_array,0,length)
   end
 end
 
-bst = Tree.new(Array.new(15) { rand(1..100) })
-# p bst.arry.length
+bst = Tree.new([1, 2, 3, 4])
 root = bst.build_tree
 bst.pretty_print(root)
+bst.insert(99, root)
+bst.insert(93, root)
+bst.insert(97, root)
+bst.insert(92, root)
+bst.pretty_print(root)
+p = bst.rebalance(root)
+bst.pretty_print(p)

@@ -160,7 +160,6 @@ class Tree
     return arry if root.nil?
 
     arry.push(root.data)
-    # p root.data
     create_array(root.left)
     create_array(root.right)
   end
@@ -173,13 +172,6 @@ class Tree
   end
 end
 
-bst = Tree.new([1, 2, 3, 4])
+bst = Tree.new((Array.new(15) { rand(1..100) }))
 root = bst.build_tree
 bst.pretty_print(root)
-bst.insert(99, root)
-bst.insert(93, root)
-bst.insert(97, root)
-bst.insert(92, root)
-bst.pretty_print(root)
-p = bst.rebalance(root)
-bst.pretty_print(p)

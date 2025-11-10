@@ -1,4 +1,6 @@
-require_relative 'node'
+# frozen_string_literal: true
+
+require_relative "node"
 class Tree
   attr_accessor :root, :arry
 
@@ -10,7 +12,7 @@ class Tree
   def build_tree(arr = arry, start = 0, stop = @len)
     array = arr.sort.uniq
 
-    return nil if start > stop
+    return if start > stop
 
     mid = (start + stop) / 2
     root = Node.new(array[mid])
@@ -19,10 +21,10 @@ class Tree
     root
   end
 
-  def pretty_print(node = @root, prefix = '', is_left = true)
-    pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
-    puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
-    pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
+  def pretty_print(node = @root, prefix = "", is_left = true)
+    pretty_print(node.right, "#{prefix}#{is_left ? "│   " : "    "}", false) if node.right
+    puts "#{prefix}#{is_left ? "└── " : "┌── "}#{node.data}"
+    pretty_print(node.left, "#{prefix}#{is_left ? "    " : "│   "}", true) if node.left
   end
 
   def insert(value, root)
@@ -66,7 +68,7 @@ class Tree
   end
 
   def bfs_iteratively(root)
-    return nil if root.nil?
+    return if root.nil?
 
     queue = []
     queue.push(root)
@@ -74,7 +76,7 @@ class Tree
       front = queue.shift
       queue.push(front.left) unless front.left.nil?
       queue.push(front.right) unless front.right.nil?
-      p front.data
+      p(front.data)
     end
   end
 
@@ -90,7 +92,7 @@ class Tree
   end
 
   def bfs_recursively(root, height)
-    return nil if height.zero?
+    return if height.zero?
 
     bfs_recursively(root, height - 1)
     print_nodes_at_level(root, height)
@@ -168,10 +170,10 @@ class Tree
     result = create_array(root)
     new_array = result.uniq
     length = new_array.length - 1
-    build_tree(new_array,0,length)
+    build_tree(new_array, 0, length)
   end
 end
 
-bst = Tree.new((Array.new(15) { rand(1..100) }))
+bst = Tree.new(Array.new(15) { rand(1..100) })
 root = bst.build_tree
 bst.pretty_print(root)

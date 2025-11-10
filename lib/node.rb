@@ -1,6 +1,9 @@
-require_relative 'comparable'
+# frozen_string_literal: true
+
+require_relative "comparable"
 class Node
   include Comparable
+
   attr_accessor :data, :left, :right
 
   def initialize(data)
